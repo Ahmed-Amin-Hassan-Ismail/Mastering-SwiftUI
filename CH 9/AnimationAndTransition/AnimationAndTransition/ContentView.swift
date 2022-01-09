@@ -9,28 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var circleColorChange = false
-    @State private var heartColorChange = false
-    @State private var heartSizeChange = false
+    @State private var isLoading: Bool = false
     
     var body: some View {
         ZStack {
+        Circle()
+            .stroke(Color(.systemGray5))
+            .frame(width: 200, height: 200, alignment: .center)
+            
+            
+            
+        Circle()
+            .trim(from: 0, to: 0.2)
+            .stroke(Color.green, lineWidth: 10)
+            .frame(width: 180, height: 180, alignment: .center)
+            .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+            
             
             Circle()
-                .frame(width: 200, height: 200, alignment: .center)
-                .foregroundColor(circleColorChange ? Color(.systemGray5) : Color(.systemRed))
-                
+                .stroke(Color(.systemGray5))
+                .frame(width: 160, height: 160, alignment: .center)
             
-            Image(systemName: "heart.fill")
-                .foregroundColor(heartColorChange ? .red : .white)
-                .font(.system(size: 100))
-                .scaleEffect(heartSizeChange ? 1 : 0.5)
-        }
-        .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3), value: 1)
-        .onTapGesture {
-            self.circleColorChange.toggle()
-            self.heartColorChange.toggle()
-            self.heartSizeChange.toggle()
+                .onAppear {
+                self.isLoading = true
+            }
+            
         }
     }
 }
