@@ -9,29 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var progress: CGFloat = 0.0
     @State private var isLoading: Bool = false
     
     var body: some View {
         ZStack {
-            Text("Loading...")
-                .font(.system(.body, design: .rounded))
+            Text("\(Int(progress * 100))%")
+                .font(.system(.largeTitle, design: .rounded))
                 .bold()
-                .offset(x: 0, y: -25)
             
-            RoundedRectangle(cornerRadius: 3)
-                .stroke(Color(.systemGray5), lineWidth: 3)
-                .background(Color(.systemGray6))
-                .frame(width: 250, height: 10, alignment: .center)
+            Circle()
+                .stroke(Color(.systemGray5), lineWidth: 20)
+                .frame(width: 250, height: 250, alignment: .center)
             
-            RoundedRectangle(cornerRadius: 3)
-                .stroke(.green, lineWidth: 3)
-                .frame(width: 50, height: 3, alignment: .center)
-                .offset(x: isLoading ? 110 : -110, y: 0)
-                .animation(.linear(duration: 1).repeatForever(autoreverses: false))
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(.green, lineWidth: 20)
+                .frame(width: 250, height: 250, alignment: .center)
+                .rotationEffect(Angle(degrees: -90))
             
             
                 .onAppear {
-                    self.isLoading = true
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                        self.progress += 0.05
+                        print("progress \(self.progress)")
+                        if self.progress >= 1.01 {
+                            self.progress = 0.0
+                            //timer.invalidate()
+                        }
+                    }
                 }
         }
     }
