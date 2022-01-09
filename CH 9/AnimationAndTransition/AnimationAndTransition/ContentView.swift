@@ -13,28 +13,26 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-        Circle()
-            .stroke(Color(.systemGray5))
-            .frame(width: 200, height: 200, alignment: .center)
+            Text("Loading...")
+                .font(.system(.body, design: .rounded))
+                .bold()
+                .offset(x: 0, y: -25)
             
+            RoundedRectangle(cornerRadius: 3)
+                .stroke(Color(.systemGray5), lineWidth: 3)
+                .background(Color(.systemGray6))
+                .frame(width: 250, height: 10, alignment: .center)
             
+            RoundedRectangle(cornerRadius: 3)
+                .stroke(.green, lineWidth: 3)
+                .frame(width: 50, height: 3, alignment: .center)
+                .offset(x: isLoading ? 110 : -110, y: 0)
+                .animation(.linear(duration: 1).repeatForever(autoreverses: false))
             
-        Circle()
-            .trim(from: 0, to: 0.2)
-            .stroke(Color.green, lineWidth: 10)
-            .frame(width: 180, height: 180, alignment: .center)
-            .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
-            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-            
-            
-            Circle()
-                .stroke(Color(.systemGray5))
-                .frame(width: 160, height: 160, alignment: .center)
             
                 .onAppear {
-                self.isLoading = true
-            }
-            
+                    self.isLoading = true
+                }
         }
     }
 }
