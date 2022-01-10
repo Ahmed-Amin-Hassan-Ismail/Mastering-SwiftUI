@@ -9,36 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var progress: CGFloat = 0.0
-    @State private var isLoading: Bool = false
+    @State private var recordBegin: Bool = false
+    @State private var recording: Bool = false
     
     var body: some View {
+        
         ZStack {
-            Text("\(Int(progress * 100))%")
-                .font(.system(.largeTitle, design: .rounded))
-                .bold()
+            RoundedRectangle(cornerRadius: recordBegin ? 30 : 5)
+                .frame(width: recordBegin ? 60 : 250 ,
+                       height: 60, alignment: .center)
+                .foregroundColor(recordBegin ? .red : .green)
             
-            Circle()
-                .stroke(Color(.systemGray5), lineWidth: 20)
-                .frame(width: 250, height: 250, alignment: .center)
+            Image(systemName: "mic.fill")
+                .font(.system(.title, design: .rounded))
+                .foregroundColor(.white)
+                .scaleEffect(recording ? 0.7 : 1.0)
             
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(.green, lineWidth: 20)
-                .frame(width: 250, height: 250, alignment: .center)
-                .rotationEffect(Angle(degrees: -90))
-            
-            
-                .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-                        self.progress += 0.05
-                        print("progress \(self.progress)")
-                        if self.progress >= 1.01 {
-                            self.progress = 0.0
-                            //timer.invalidate()
-                        }
-                    }
-                }
+            RoundedRectangle(cornerRadius: recordBegin ? 30 : 10)
+                .trim(from: 0, to: recordBegin ? 0 : 1)
+                .stroke(.green, lineWidth: 5)
+                .frame(width: recordBegin ? 70 : 260,
+                       height: 70,
+                       alignment: .center)
+        }
+        .onTapGesture {
+            withAnimation(.spring()) {
+                self.recordBegin.toggle()
+            }
+            withAnimation(.spring().repeatForever(autoreverses: false).delay(0.5)) {
+                self.recording.toggle()
+            }
         }
     }
 }
