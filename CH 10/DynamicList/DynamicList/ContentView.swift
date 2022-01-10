@@ -34,15 +34,9 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        List(restaurants.indices ) { index in
-            
-            if (0...1).contains(index) {
-                FullImagesRestaurantRow(restaurant: restaurants[index])
-            } else {
-                BasicRestaurantRow(restaurant: restaurants[index])
-            }
-            
-            //FullImagesRestaurantRow(restaurant: restaurant)
+        List(restaurants ) { restaurant in
+                     
+            FullImagesRestaurantRow(restaurant: restaurant)
         }
     }
 }
@@ -73,22 +67,39 @@ struct FullImagesRestaurantRow: View {
     var restaurant: Restaurant
     
     var body: some View {
-        ZStack {
+        VStack(alignment: .leading, spacing: nil) {
             Image(restaurant.image)
                 .resizable()
                 .aspectRatio(nil, contentMode: .fill)
-                .frame(width: .infinity, height: 200, alignment: .center)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.black)
-                        .opacity(0.2)
-                )
+                .frame(width: .infinity, height: 300, alignment: .center)
+            
             Text(restaurant.name)
-                .font(.system(.title, design: .rounded))
-                .fontWeight(.black)
-                .foregroundColor(.white)
+                .font(.system(.largeTitle, design: .rounded))
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
+                .lineLimit(3)
+        
+            Text("By Ahmed Amin")
+                .font(.system(.body, design: .rounded))
+                .foregroundColor(Color(.systemGray2))
+            
+            HStack {
+                ForEach(0...3, id: \.self) { index in
+                    Image(systemName: "star.fill")
+                        .font(.body)
+                        .foregroundColor(.yellow)
+                }
+            }
+            
+            Text("Building a list view with complex row layout")
+                .font(.system(.body, design: .rounded))
+                .foregroundColor(Color(.systemGray2))
+                                    
         }
+        
     }
+    
+    
 }
 
