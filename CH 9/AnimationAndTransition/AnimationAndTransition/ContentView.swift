@@ -9,40 +9,66 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var show = false
+    @State private var processing: Bool = false
+    @State private var completed: Bool = false
+    @State private var isLoading: Bool = false
     
     var body: some View {
         
-        VStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 300, height: 300, alignment: .center)
-                .foregroundColor(.green)
-                .overlay(
-                    Text("Show details.")
-                        .font(.system(.largeTitle, design: .rounded))
+        ZStack {
+            RoundedRectangle(cornerRadius: 30)
+                .frame(width: processing ? 250 : 200, height: 60, alignment: .center)
+                .foregroundColor(completed ? .red : .green)
+            
+            if !processing {
+                Text("Submit")
+                    .font(.system(.title, design: .rounded))
+                    .bold()
+                    .foregroundColor(.white)
+                    .transition(.move(edge: .top))
+            }
+            
+            if processing && !completed {
+                HStack {
+                    Circle()
+                        .trim(from: 0, to: 0.9)
+                        .stroke(.white, lineWidth: 3)
+                        .frame(width: 30, height: 30, alignment: .center)
+                        .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                        .animation(.easeInOut.repeatForever(autoreverses: false))
+                    
+                    Text("Processing")
+                        .font(.system(.title, design: .rounded))
                         .bold()
                         .foregroundColor(.white)
-                    
-                )
-            
-            if show {
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(width: 300, height: 300, alignment: .center)
-                    .foregroundColor(.purple)
-                    .overlay(
-                        Text("Well, here is the details")
-                            .font(.system(.largeTitle, design: .rounded))
-                            .bold()
-                            .foregroundColor(.white)
-                    )
-                    .transition(.asymmetric(insertion: .scale(scale: 0, anchor: .bottom), removal: .offset(x: -600, y: 0)))
+                }
+                .transition(.opacity)
+                .onAppear {
+                    self.isLoading = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        self.completed = true
+                    }
+                }
             }
             
+            if completed {
+                Text("Done")
+                    .font(.system(.title, design: .rounded))
+                    .bold()
+                    .foregroundColor(.white)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            self.processing = false
+                            self.completed = false
+                            self.isLoading = false
+                        }
+                    }
+            }
         }
+        
+        .animation(.spring())
         .onTapGesture {
-            withAnimation(.spring()) {
-                self.show.toggle()
-            }
+            self.processing = true
         }
         
         
