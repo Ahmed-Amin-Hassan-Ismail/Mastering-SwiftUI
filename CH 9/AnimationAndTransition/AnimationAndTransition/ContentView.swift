@@ -9,37 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var recordBegin: Bool = false
-    @State private var recording: Bool = false
+    @State private var show = false
     
     var body: some View {
         
-        ZStack {
-            RoundedRectangle(cornerRadius: recordBegin ? 30 : 5)
-                .frame(width: recordBegin ? 60 : 250 ,
-                       height: 60, alignment: .center)
-                .foregroundColor(recordBegin ? .red : .green)
+        VStack {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: 300, height: 300, alignment: .center)
+                .foregroundColor(.green)
+                .overlay(
+                    Text("Show details.")
+                        .font(.system(.largeTitle, design: .rounded))
+                        .bold()
+                        .foregroundColor(.white)
+                    
+                )
             
-            Image(systemName: "mic.fill")
-                .font(.system(.title, design: .rounded))
-                .foregroundColor(.white)
-                .scaleEffect(recording ? 0.7 : 1.0)
+            if show {
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: 300, height: 300, alignment: .center)
+                    .foregroundColor(.purple)
+                    .overlay(
+                        Text("Well, here is the details")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .bold()
+                            .foregroundColor(.white)
+                    )
+                    .transition(.asymmetric(insertion: .scale(scale: 0, anchor: .bottom), removal: .offset(x: -600, y: 0)))
+            }
             
-            RoundedRectangle(cornerRadius: recordBegin ? 30 : 10)
-                .trim(from: 0, to: recordBegin ? 0 : 1)
-                .stroke(.green, lineWidth: 5)
-                .frame(width: recordBegin ? 70 : 260,
-                       height: 70,
-                       alignment: .center)
         }
         .onTapGesture {
             withAnimation(.spring()) {
-                self.recordBegin.toggle()
-            }
-            withAnimation(.spring().repeatForever(autoreverses: false).delay(0.5)) {
-                self.recording.toggle()
+                self.show.toggle()
             }
         }
+        
+        
     }
 }
 
