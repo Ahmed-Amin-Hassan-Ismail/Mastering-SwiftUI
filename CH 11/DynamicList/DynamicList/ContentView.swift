@@ -33,6 +33,30 @@ struct ContentView: View {
         Restaurant(name: "CASK Pub and Kitchen", image: "caskpubkitchen")
     ]
     
+    
+    init() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        
+        navigationBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemRed,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!
+        ]
+        
+        navigationBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.systemRed,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!
+        ]
+        
+        navigationBarAppearance.setBackIndicatorImage(
+            UIImage(systemName: "arrow.turn.up.left"),
+            transitionMaskImage: UIImage(systemName: "arrow.turn.up.left"))
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        
+        UINavigationBar.appearance().tintColor = UIColor.black
+    }
     var body: some View {
         
         NavigationView {
@@ -63,14 +87,13 @@ struct RestaurantViewDetail: View {
             Image(restaurant.image)
                 .resizable()
                 .aspectRatio(nil, contentMode: .fill)
-                .frame(width: .infinity, height: 400, alignment: .center)
                 .clipped()
             
             Text(restaurant.name)
                 .font(.system(.title, design: .rounded))
                 .fontWeight(.black)
         }
-        Spacer(minLength: nil)
+        Spacer()
     }
 }
 
