@@ -37,7 +37,10 @@ struct ContentView: View {
         
         NavigationView {
             List(restaurants) { restaurant in
-                BasicRestaurantRow(restaurant: restaurant)
+                                
+                NavigationLink(destination: RestaurantViewDetail(restaurant: restaurant)) {
+                    BasicRestaurantRow(restaurant: restaurant)
+                }
             }
             .navigationTitle("Restaurant")
         }
@@ -48,6 +51,26 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+
+struct RestaurantViewDetail: View {
+    var restaurant: Restaurant
+    
+    var body: some View {
+        VStack {
+            Image(restaurant.image)
+                .resizable()
+                .aspectRatio(nil, contentMode: .fill)
+                .frame(width: .infinity, height: 400, alignment: .center)
+                .clipped()
+            
+            Text(restaurant.name)
+                .font(.system(.title, design: .rounded))
+                .fontWeight(.black)
+        }
+        Spacer(minLength: nil)
     }
 }
 
@@ -65,45 +88,3 @@ struct BasicRestaurantRow: View {
         }
     }
 }
-
-
-struct FullImagesRestaurantRow: View {
-    var restaurant: Restaurant
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: nil) {
-            Image(restaurant.image)
-                .resizable()
-                .aspectRatio(nil, contentMode: .fill)
-                .frame(width: .infinity, height: 300, alignment: .center)
-            
-            Text(restaurant.name)
-                .font(.system(.largeTitle, design: .rounded))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-                .lineLimit(3)
-        
-            Text("By Ahmed Amin")
-                .font(.system(.body, design: .rounded))
-                .foregroundColor(Color(.systemGray2))
-            
-            HStack {
-                ForEach(0...3, id: \.self) { index in
-                    Image(systemName: "star.fill")
-                        .font(.body)
-                        .foregroundColor(.yellow)
-                }
-            }
-            
-            Text("Building a list view with complex row layout")
-                .font(.system(.body, design: .rounded))
-                .foregroundColor(Color(.systemGray2))
-                                    
-        }
-        
-    }
-    
-    
-}
-
