@@ -13,12 +13,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(articles) { article in
-                
-                NavigationLink(destination: ArticleRow(isFromLink: true, article: article)) {
+                ZStack {
                     ArticleRow(article: article)
+                    
+                    NavigationLink(destination: ArticleDetailView(article: article)) {
+                        EmptyView()
+                    }
                 }
-                
             }
+            .navigationTitle("Your Reading")
         }
     }
 }
@@ -31,7 +34,6 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct ArticleRow: View {
-    @State var isFromLink: Bool = false
     var article: Article
     
     var body: some View {
@@ -64,9 +66,6 @@ struct ArticleRow: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
-        }
-        if isFromLink {
-            Spacer()
         }
     }
 }
