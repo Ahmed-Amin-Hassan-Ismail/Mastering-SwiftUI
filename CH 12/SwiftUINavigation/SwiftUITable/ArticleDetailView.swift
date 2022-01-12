@@ -20,13 +20,13 @@ struct ArticleDetailView: View {
                 Image(article.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    
+                
                 Group {
                     Text(article.title)
                         .font(.system(.title, design: .rounded))
                         .fontWeight(.black)
                         .lineLimit(3)
-                        
+                    
                     Text("By \(article.author)".uppercased())
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -40,19 +40,25 @@ struct ArticleDetailView: View {
                     .lineLimit(1000)
                     .multilineTextAlignment(.leading)
             }
-
         }
-        .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-            Button(action: {
-                // Navigate to the previous screen
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image(systemName: "chevron.left.circle.fill")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-            })
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 40)
+                    
+                    Spacer()
+                    
+                }
+            }
         )
     }
 }
