@@ -10,22 +10,21 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var showDetailView: Bool = false
+    
     @State private var selectedArticle: Article?
     
     var body: some View {
         NavigationView {
             List(articles) { article in
-                    ArticleRow(article: article)
+                ArticleRow(article: article)
+                
                     .onTapGesture {
-                        self.showDetailView = true
                         self.selectedArticle = article
-                    }                
-                }
-            .sheet(isPresented: $showDetailView, onDismiss: nil) {
-                if self.selectedArticle != nil {
-                    ArticleDetailView(article: self.selectedArticle!)
-                }
+                    }
+                
+            }
+            .sheet(item: $selectedArticle, onDismiss: nil) { Article in
+                ArticleDetailView(article: Article)
             }
             .navigationTitle("Your Reading")
         }
