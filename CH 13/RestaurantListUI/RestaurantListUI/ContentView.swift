@@ -34,6 +34,7 @@ struct ContentView: View {
     ]
     
     @State private var selectedRestaurant: Restaurant?
+    @State private var showSetting: Bool = false
     
     var body: some View {
         
@@ -83,7 +84,23 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Restaurant")
+            
+            .navigationBarItems(trailing:
+                Button {
+                    self.showSetting = true
+                } label: {
+                    Image(systemName: "gear")
+                        .resizable()
+                        .font(.system(.title, design: .rounded))
+                        .foregroundColor(.black)
+                }
+            )
+            .sheet(isPresented: $showSetting, onDismiss: nil) {
+                SettingView()
+            }
+       
         }
+   
     }
     
     

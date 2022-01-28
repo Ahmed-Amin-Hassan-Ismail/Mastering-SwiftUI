@@ -12,6 +12,8 @@ struct SettingView: View {
     @State private var selectedOrder = 0
     @State private var maxPriceLevel = 5
     @State private var showCheckIn = false
+    @Environment(\.presentationMode) var presentationMode
+    
     
     private var displayOrders = [ "Alphabetical", "Show Favorite First", "Show Check-in First"]
     
@@ -59,6 +61,20 @@ struct SettingView: View {
                 }
                 
                 .navigationTitle("Settings")
+                .navigationBarItems(leading:
+                                        Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Cancel")
+                        .foregroundColor(.black)
+                }),
+                                    trailing:
+                                        Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Save")
+                        .foregroundColor(.black)
+                }))
             }
         }
     }
