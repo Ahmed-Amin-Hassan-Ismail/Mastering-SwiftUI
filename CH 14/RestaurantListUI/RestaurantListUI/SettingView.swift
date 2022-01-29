@@ -9,21 +9,19 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @State private var selectedOrder = 0
+    @State private var selectedOrder = DisplayOrderType.alphabetical
     @State private var maxPriceLevel = 5
     @State private var showCheckIn = false
     @Environment(\.presentationMode) var presentationMode
-    
-    
-    private var displayOrders = [ "Alphabetical", "Show Favorite First", "Show Check-in First"]
+    var settingStore: SettingStore
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     Picker(selection: $selectedOrder) {
-                        ForEach(0..<displayOrders.count, id: \.self) {
-                            Text(self.displayOrders[$0])
+                        ForEach(DisplayOrderType.allCases, id: \.self) { orderType in
+                            Text(orderType.text)
                         }
                     } label: {
                         Text("Display Order")
@@ -61,15 +59,15 @@ struct SettingView: View {
                 }
                 
                 .navigationTitle("Settings")
-                .navigationBarItems(leading:
-                                        Button(action: {
+                .navigationBarItems(leading: Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Cancel")
                         .foregroundColor(.black)
-                }),
-                                    trailing:
-                                        Button(action: {
+                }), trailing: Button(action: {
+                    self.settingStore.showCheckInOnly = self.showCheckIn
+                    self.settingStore.displayOrder = self.selectedOrder
+                    self.settingStore.maxPriceLevel = self.maxPriceLevel
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Save")
@@ -77,11 +75,17 @@ struct SettingView: View {
                 }))
             }
         }
+        
+        .onAppear {
+            self.showCheckIn = self.settingStore.showCheckInOnly
+            self.selectedOrder = self.settingStore.displayOrder
+            self.maxPriceLevel = self.settingStore.maxPriceLevel
+        }
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(settingStore: SettingStore())
     }
 }

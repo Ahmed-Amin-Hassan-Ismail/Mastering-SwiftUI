@@ -13,6 +13,7 @@
 		535CDA3427A437C200593ED0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535CDA3327A437C200593ED0 /* Preview Assets.xcassets */; };
 		535CDA3B27A4385C00593ED0 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535CDA3A27A4385C00593ED0 /* Restaurant.swift */; };
 		535CDA3D27A4418B00593ED0 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535CDA3C27A4418B00593ED0 /* SettingView.swift */; };
+		53C473F527A5C673002453DC /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C473F427A5C673002453DC /* SettingStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		535CDA3327A437C200593ED0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		535CDA3A27A4385C00593ED0 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		535CDA3C27A4418B00593ED0 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		53C473F427A5C673002453DC /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				535CDA2C27A437C000593ED0 /* RestaurantListUIApp.swift */,
 				535CDA2E27A437C000593ED0 /* ContentView.swift */,
 				535CDA3C27A4418B00593ED0 /* SettingView.swift */,
+				53C473F427A5C673002453DC /* SettingStore.swift */,
 				535CDA3A27A4385C00593ED0 /* Restaurant.swift */,
 				535CDA3027A437C200593ED0 /* Assets.xcassets */,
 				535CDA3227A437C200593ED0 /* Preview Content */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				535CDA2F27A437C000593ED0 /* ContentView.swift in Sources */,
+				53C473F527A5C673002453DC /* SettingStore.swift in Sources */,
 				535CDA3D27A4418B00593ED0 /* SettingView.swift in Sources */,
 				535CDA2D27A437C000593ED0 /* RestaurantListUIApp.swift in Sources */,
 				535CDA3B27A4385C00593ED0 /* Restaurant.swift in Sources */,
