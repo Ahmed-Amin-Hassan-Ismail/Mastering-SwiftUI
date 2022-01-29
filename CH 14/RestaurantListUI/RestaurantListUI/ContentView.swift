@@ -42,43 +42,45 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(restaurants) { restaurant in
-                    BasicRestaurantRow(restaurant: restaurant)
-                        .contextMenu {
-                            
-                            Button(action: {
-                                // mark the selected restaurant as check-in
-                                self.checkIn(item: restaurant)
-                            }) {
-                                HStack {
-                                    Text("Check-in")
-                                    Image(systemName: "checkmark.seal.fill")
-                                }
-                            }
-                            
-                            Button(action: {
-                                // delete the selected restaurant
-                                self.delete(item: restaurant)
-                            }) {
-                                HStack {
-                                    Text("Delete")
-                                    Image(systemName: "trash")
-                                }
-                            }
-                            
-                            Button(action: {
-                                // mark the selected restaurant as favorite
-                                self.setFavorite(item: restaurant)
+                    if self.shouldShowItem(restaurant: restaurant) {
+                        BasicRestaurantRow(restaurant: restaurant)
+                            .contextMenu {
                                 
-                            }) {
-                                HStack {
-                                    Text("Favorite")
-                                    Image(systemName: "star")
+                                Button(action: {
+                                    // mark the selected restaurant as check-in
+                                    self.checkIn(item: restaurant)
+                                }) {
+                                    HStack {
+                                        Text("Check-in")
+                                        Image(systemName: "checkmark.seal.fill")
+                                    }
+                                }
+                                
+                                Button(action: {
+                                    // delete the selected restaurant
+                                    self.delete(item: restaurant)
+                                }) {
+                                    HStack {
+                                        Text("Delete")
+                                        Image(systemName: "trash")
+                                    }
+                                }
+                                
+                                Button(action: {
+                                    // mark the selected restaurant as favorite
+                                    self.setFavorite(item: restaurant)
+                                    
+                                }) {
+                                    HStack {
+                                        Text("Favorite")
+                                        Image(systemName: "star")
+                                    }
                                 }
                             }
-                        }
-                        .onTapGesture {
-                            self.selectedRestaurant = restaurant
-                        }
+                            .onTapGesture {
+                                self.selectedRestaurant = restaurant
+                            }
+                    }
                 }
                 .onDelete { (indexSet) in
                     self.restaurants.remove(atOffsets: indexSet)
@@ -87,21 +89,21 @@ struct ContentView: View {
             .navigationBarTitle("Restaurant")
             
             .navigationBarItems(trailing:
-                Button {
-                    self.showSetting = true
-                } label: {
-                    Image(systemName: "gear")
-                        .resizable()
-                        .font(.system(.title, design: .rounded))
-                        .foregroundColor(.black)
-                }
+                                    Button {
+                self.showSetting = true
+            } label: {
+                Image(systemName: "gear")
+                    .resizable()
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(.black)
+            }
             )
             .sheet(isPresented: $showSetting, onDismiss: nil) {
                 SettingView().environmentObject(self.settingStore)
             }
-       
+            
         }
-   
+        
     }
     
     
@@ -121,6 +123,10 @@ struct ContentView: View {
         if let index = self.restaurants.firstIndex(where: { $0.id == restaurant.id }) {
             self.restaurants[index].isCheckIn.toggle()
         }
+    }
+    
+    private func shouldShowItem(restaurant: Restaurant) -> Bool {
+        return (!self.settingStore.showCheckInOnly || restaurant.isCheckIn) && (restaurant.priceLevel <= self.settingStore.maxPriceLevel)
     }
 }
 
