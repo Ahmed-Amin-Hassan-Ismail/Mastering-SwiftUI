@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 
 
@@ -42,8 +43,8 @@ enum DisplayOrderType: Int, CaseIterable {
 
 
 
-final class SettingStore {
-    var defaults: UserDefaults
+final class SettingStore: ObservableObject {
+    @Published  var defaults: UserDefaults
     
     /// init the class
     init (defaults: UserDefaults = .standard) {

@@ -13,7 +13,7 @@ struct SettingView: View {
     @State private var maxPriceLevel = 5
     @State private var showCheckIn = false
     @Environment(\.presentationMode) var presentationMode
-    var settingStore: SettingStore
+    @EnvironmentObject var settingStore: SettingStore
     
     var body: some View {
         NavigationView {
@@ -86,6 +86,6 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView(settingStore: SettingStore())
+        SettingView().environmentObject(SettingStore())
     }
 }

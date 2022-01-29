@@ -11,7 +11,7 @@ import SwiftUI
 struct RestaurantListUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(settingStore: SettingStore())
+            ContentView().environmentObject(SettingStore())
         }
     }
 }
