@@ -11,6 +11,7 @@
 		53E40ECE27A5E48200563F5E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E40ECD27A5E48200563F5E /* ContentView.swift */; };
 		53E40ED027A5E48300563F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E40ECF27A5E48300563F5E /* Assets.xcassets */; };
 		53E40ED327A5E48300563F5E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E40ED227A5E48300563F5E /* Preview Assets.xcassets */; };
+		53E606D827A7365000B31754 /* UserRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E606D727A7365000B31754 /* UserRegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		53E40ECD27A5E48200563F5E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		53E40ECF27A5E48300563F5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53E40ED227A5E48300563F5E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		53E606D727A7365000B31754 /* UserRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				53E40ECB27A5E48200563F5E /* UserRegisterationUIApp.swift */,
 				53E40ECD27A5E48200563F5E /* ContentView.swift */,
+				53E606D727A7365000B31754 /* UserRegistrationViewModel.swift */,
 				53E40ECF27A5E48300563F5E /* Assets.xcassets */,
 				53E40ED127A5E48300563F5E /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E606D827A7365000B31754 /* UserRegistrationViewModel.swift in Sources */,
 				53E40ECE27A5E48200563F5E /* ContentView.swift in Sources */,
 				53E40ECC27A5E48200563F5E /* UserRegisterationUIApp.swift in Sources */,
 			);

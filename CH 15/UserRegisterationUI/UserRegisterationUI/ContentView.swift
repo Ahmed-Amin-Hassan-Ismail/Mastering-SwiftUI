@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var username: String = ""
-    @State private var password: String = ""
-    @State private var confirmPassword: String = ""
+    @ObservedObject private var userRegistrationViewModel = UserRegistrationViewModel()
     
     var body: some View {
         VStack {
@@ -20,20 +18,25 @@ struct ContentView: View {
                 .bold()
                 .padding(.bottom, 30)
                         
-            FormField(fieldName: "Username", fieldValue: $username, isSecured: false)
-            RequirementText(nameIcoon: "xmark.square", requirmentText: "A minimum of 8 characters", isStrike: false)
+            FormField(fieldName: "Username", fieldValue: $userRegistrationViewModel.username, isSecured: false)
+            RequirementText(nameIcoon: "xmark.square", iconColor: userRegistrationViewModel.isUsernameLengthValid ? Color.secondary : Color(red: 251/255, green: 128/255, blue: 128/255), requirmentText: "A minimum of 4 characters", isStrike: userRegistrationViewModel.isUsernameLengthValid)
+            
                 .padding()
             
-            FormField(fieldName: "Password", fieldValue: $password, isSecured: true)
+            FormField(fieldName: "Password", fieldValue: $userRegistrationViewModel.password, isSecured: true)
             VStack {
-                RequirementText(nameIcoon: "lock.open", requirmentText: "A minimum of 8 characters", isStrike: false)
+                
+                RequirementText(nameIcoon: "lock.open", iconColor: userRegistrationViewModel.isPasswordLengthValid ? Color.secondary : Color(red: 251/255, green: 128/255, blue: 128/255), requirmentText: "A minimum of 8 characters", isStrike: userRegistrationViewModel.isPasswordLengthValid)
                     .padding(.bottom, 5)
-                RequirementText(nameIcoon: "lock.open", requirmentText: "One uppercase letter", isStrike: false)
+                
+                RequirementText(nameIcoon: "lock.open", iconColor: userRegistrationViewModel.isPasswordCapitalLetter ? Color.secondary : Color(red: 251/255, green: 128/255, blue: 128/255), requirmentText: "One uppercase letter", isStrike: userRegistrationViewModel.isPasswordCapitalLetter)
+     
             }
             .padding()
             
-            FormField(fieldName: "Confirm Password", fieldValue: $confirmPassword, isSecured: true)
-            RequirementText(nameIcoon: "xmark.square", requirmentText: "Your confirm password should be the same as password", isStrike: false)
+            FormField(fieldName: "Confirm Password", fieldValue: $userRegistrationViewModel.passwordConfirm, isSecured: true)
+            
+            RequirementText(nameIcoon: "xmark.square", iconColor: userRegistrationViewModel.isPasswordConfirmValid ? Color.secondary : Color(red: 251/255, green: 128/255, blue: 128/255), requirmentText: "Your confirm password should be the same as password", isStrike: userRegistrationViewModel.isPasswordConfirmValid)
                 .padding()
                 .padding(.bottom, 50)
             
