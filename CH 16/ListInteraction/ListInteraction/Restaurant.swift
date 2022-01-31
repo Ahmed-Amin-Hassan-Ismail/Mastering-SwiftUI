@@ -13,4 +13,5 @@ struct Restaurant: Identifiable {
     var id = UUID()
     var name: String
     var image: String
+    var isFaborite: Bool = false
 }
