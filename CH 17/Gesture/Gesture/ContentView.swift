@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isPressed: Bool = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+       Image(systemName: "star.circle.fill")
+            .font(.system(size: 200))
+            .foregroundColor(.green)
+            .scaleEffect(isPressed ? 0.5 : 1.0)
+            .gesture(
+                TapGesture()
+                    .onEnded({ _ in
+                        self.isPressed.toggle()
+                    })
+            )
     }
 }
 
