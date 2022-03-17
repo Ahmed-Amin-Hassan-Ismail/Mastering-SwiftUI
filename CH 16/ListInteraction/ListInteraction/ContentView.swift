@@ -32,6 +32,8 @@ struct ContentView: View {
                               Restaurant(name: "CASK Pub and Kitchen", image: "caskpubkitchen")
     ]
     
+    @State private var selectedRestaurant: Restaurant?
+    
     var body: some View {
         NavigationView {
             
@@ -58,13 +60,36 @@ struct ContentView: View {
                                     Image(systemName: "star")
                                 }
                             }
+                            
+                            Button {
+                                self.setCheckInRestaurant(item: restaurant)
+                            } label: {
+                                HStack {
+                                    Text("Check-in")
+                                    Image(systemName: "checkmark.seal.fill")
+                                }
+                            }
 
                             
+                            
                         })
+                        .onTapGesture {
+                            self.selectedRestaurant = restaurant
+                        }
                 }
-                
                 .onDelete(perform: { indexSet in
                     self.restaurants.remove(atOffsets: indexSet)
+                })
+                .actionSheet(item: $selectedRestaurant, content: { restaurant in
+                    ActionSheet(title: Text("what do you want to do?"), message: nil, buttons: [
+                        .default(Text("Mark as Favorite"), action: {
+                            self.setFavoriteRestaurant(item: restaurant)
+                        }),
+                        .destructive(Text("Delete"), action: {
+                            self.delete(item: restaurant)
+                        })
+                        
+                    ])
                 })
                 .navigationTitle("Restaurant")
                 
@@ -83,6 +108,15 @@ struct ContentView: View {
         }) {
             self.restaurants[index].isFaborite.toggle()
         }
+    }
+    
+    private func setCheckInRestaurant(item restaurant: Restaurant) {
+        if let index = self.restaurants.firstIndex(where: {
+            $0.id == restaurant.id
+        }) {
+            self.restaurants[index].isCheckIn.toggle()
+        }
+            
     }
 }
 
@@ -104,9 +138,15 @@ struct BasicImageRow: View {
             
             
             Text(restaurant.name)
-            Spacer()
+            
+            if restaurant.isCheckIn {
+                Image(systemName: "checkmark.seal.fill")
+                    .foregroundColor(.red)
+            }
+            
             
             if restaurant.isFaborite {
+                Spacer()
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
             }

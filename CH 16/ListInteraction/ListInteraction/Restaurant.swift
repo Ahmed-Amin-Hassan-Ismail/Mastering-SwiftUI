@@ -14,4 +14,5 @@ struct Restaurant: Identifiable {
     var name: String
     var image: String
     var isFaborite: Bool = false
+    var isCheckIn: Bool = false 
 }
