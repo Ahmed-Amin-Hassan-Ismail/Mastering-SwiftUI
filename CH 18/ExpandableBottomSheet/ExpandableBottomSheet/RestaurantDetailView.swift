@@ -12,25 +12,40 @@ struct RestaurantDetailView: View {
     
     var body: some View {
         
-        VStack {
-            Spacer()
-            HandleBar()
-            TitleBar()
-            HeaderView(restaurant: self.restaurant)
-            DetailInfoView(icon: "map", info: self.restaurant.location)
-            DetailInfoView(icon: nil, info: self.restaurant.description)
-                .padding(.top)
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                
+                HandleBar()
+                
+                ScrollView(.vertical) {
+                    TitleBar()
+                    
+                    HeaderView(restaurant: self.restaurant)
+                    
+                    DetailInfoView(icon: "map", info: self.restaurant.location)
+                        .padding(.top)
+                        .padding(.bottom, 5)
+                    
+                    DetailInfoView(icon: "phone", info: self.restaurant.phone)
+                    
+                    DetailInfoView(icon: nil, info: self.restaurant.description)
+                        .padding(.top)
+                }
+                .background(.white)
+                .cornerRadius(10, antialiased: true)
+            }
+            .offset(y: geometry.size.height / 2)
+            .edgesIgnoringSafeArea(.all)
         }
-        .background(.white)
-        .cornerRadius(10, antialiased: true)
-        
-        
     }
 }
 
 struct RestaurantDetailView_Previews: PreviewProvider {
     static var previews: some View {
         RestaurantDetailView(restaurant: restaurants[0])
+            .background(Color.black.opacity(0.3))
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -102,7 +117,7 @@ struct DetailInfoView: View {
         HStack {
             icon.map {
                 Image(systemName: $0)
-                    .padding()
+                    .padding(.trailing, 10)
             }
             Text(info)
                 .font(.system(.body, design: .rounded))
