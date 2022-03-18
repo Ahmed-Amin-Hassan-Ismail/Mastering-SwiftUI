@@ -47,7 +47,7 @@ struct DraggableView_Previews: PreviewProvider {
         DraggableView() {
             Image(systemName: "star.circle.fill")
                 .font(.system(size: 100))
-                .foregroundColor(.green)            
+                .foregroundColor(.green)
         }
     }
 }
