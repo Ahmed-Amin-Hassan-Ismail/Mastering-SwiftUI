@@ -13,6 +13,7 @@
 		5377C59827E4F3EE00859EC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5377C59727E4F3EE00859EC0 /* Preview Assets.xcassets */; };
 		5377C5A127E4F47B00859EC0 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377C5A027E4F47B00859EC0 /* Restaurant.swift */; };
 		5377C5A527E4FDA300859EC0 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377C5A427E4FDA300859EC0 /* RestaurantDetailView.swift */; };
+		5377C5A927E5149300859EC0 /* DragState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377C5A827E5149300859EC0 /* DragState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		5377C59727E4F3EE00859EC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5377C5A027E4F47B00859EC0 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		5377C5A427E4FDA300859EC0 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
+		5377C5A827E5149300859EC0 /* DragState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				5377C59027E4F3EC00859EC0 /* ExpandableBottomSheetApp.swift */,
 				5377C59227E4F3EC00859EC0 /* ContentView.swift */,
 				5377C5A427E4FDA300859EC0 /* RestaurantDetailView.swift */,
+				5377C5A827E5149300859EC0 /* DragState.swift */,
 				5377C5A027E4F47B00859EC0 /* Restaurant.swift */,
 				5377C59427E4F3EE00859EC0 /* Assets.xcassets */,
 				5377C59627E4F3EE00859EC0 /* Preview Content */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5377C5A527E4FDA300859EC0 /* RestaurantDetailView.swift in Sources */,
+				5377C5A927E5149300859EC0 /* DragState.swift in Sources */,
 				5377C59327E4F3EC00859EC0 /* ContentView.swift in Sources */,
 				5377C59127E4F3EC00859EC0 /* ExpandableBottomSheetApp.swift in Sources */,
 				5377C5A127E4F47B00859EC0 /* Restaurant.swift in Sources */,

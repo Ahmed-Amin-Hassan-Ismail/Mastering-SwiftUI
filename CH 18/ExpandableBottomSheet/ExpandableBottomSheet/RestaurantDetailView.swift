@@ -7,8 +7,17 @@
 
 import SwiftUI
 
+enum ViewState {
+    case full
+    case half
+}
+
 struct RestaurantDetailView: View {
+    @GestureState private var dragState: DragState = .inactive
+    @State private var positionOffset: CGFloat = 0.0
+    @State private var viewState: ViewState = .half
     let restaurant: Restaurant
+    @Binding var isShow: Bool
     
     var body: some View {
         
@@ -32,20 +41,52 @@ struct RestaurantDetailView: View {
                     DetailInfoView(icon: nil, info: self.restaurant.description)
                         .padding(.top)
                 }
+                .animation(nil)
+                .disabled((self.viewState == .half) || (self.dragState.isDragging))
                 .background(.white)
                 .cornerRadius(10, antialiased: true)
-                .animation(nil)
+                
             }
-            .offset(y: geometry.size.height / 2)
+            .offset(y: geometry.size.height / 2 + self.dragState.translation.height + self.positionOffset)
             .animation(.interpolatingSpring(stiffness: 200.0, damping: 25.0, initialVelocity: 10.0))
-            .edgesIgnoringSafeArea(.all)           
+            .edgesIgnoringSafeArea(.all)
+            .gesture(DragGesture()
+                        .updating($dragState, body: { value, state, transaction in
+                state = .dragging(transaction: value.translation)
+            })
+                        .onEnded({ value in
+                switch self.viewState {
+                case .half:
+                    
+                    if value.translation.height < -geometry.size.height * 0.25 {
+                        self.positionOffset = -geometry.size.height/2 + 50
+                        self.viewState = .full
+                    }
+                    
+                    if value.translation.height > geometry.size.height * 0.3 {
+                        self.isShow = false
+                    }
+                    
+                case .full:
+                    
+                    if value.translation.height > geometry.size.height * 0.25 {
+                        self.positionOffset = 0
+                        self.viewState = .half
+                    }
+                    
+                    if value.translation.height > geometry.size.height * 0.75 {
+                        self.isShow = false
+                    }
+                }
+            })
+            )
         }
     }
 }
 
 struct RestaurantDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantDetailView(restaurant: restaurants[0])
+        RestaurantDetailView(restaurant: restaurants[0], isShow: .constant(true))
             .background(Color.black.opacity(0.3))
             .edgesIgnoringSafeArea(.all)
     }

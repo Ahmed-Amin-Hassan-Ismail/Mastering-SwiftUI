@@ -37,7 +37,7 @@ struct ContentView: View {
                         self.showDetail = false
                     }
                 selectedRestaurant.map {
-                    RestaurantDetailView(restaurant: $0)
+                    RestaurantDetailView(restaurant: $0, isShow: $showDetail)
                         .transition(.move(edge: .bottom))
                 }
             }
