@@ -8,15 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showDetail = false
+    @State private var selectedRestaurant: Restaurant?
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(restaurants) { restaurant in
-                    BasicImageRow(restaurant: restaurant)
+        ZStack {
+            NavigationView {
+                List {
+                    ForEach(restaurants) { restaurant in
+                        BasicImageRow(restaurant: restaurant)
+                            .onTapGesture {
+                                self.showDetail = true
+                                self.selectedRestaurant = restaurant
+                            }
+                    }
+                    
+                }
+                
+                .navigationBarTitle("Restaurants")
+            }
+            
+            if showDetail {
+                BlankView(bgColor: .black)
+                    .opacity(0.5)
+                    .onTapGesture {
+                        self.showDetail = false 
+                    }
+                selectedRestaurant.map {
+                    RestaurantDetailView(restaurant: $0)
+                        .transition(.move(edge: .bottom))
                 }
             }
             
-            .navigationBarTitle("Restaurants")
         }
     }
 }
@@ -27,7 +50,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
+//MARK: - Basic Row
 struct BasicImageRow: View {
     var restaurant: Restaurant
     
@@ -41,3 +64,18 @@ struct BasicImageRow: View {
         }
     }
 }
+
+//MARK: - Blank View
+struct BlankView: View {
+    var bgColor: Color
+    
+    var body: some View {
+        VStack {
+            Spacer()
+        }
+        .frame(minWidth: 0, idealWidth: nil, maxWidth: .infinity, minHeight: 0, idealHeight: nil, maxHeight: .infinity, alignment: .center)
+        .background(bgColor)
+        .edgesIgnoringSafeArea(.all)
+    }
+}
+
