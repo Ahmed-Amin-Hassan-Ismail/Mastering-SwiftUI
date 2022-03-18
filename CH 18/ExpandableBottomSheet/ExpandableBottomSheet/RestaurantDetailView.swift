@@ -34,9 +34,11 @@ struct RestaurantDetailView: View {
                 }
                 .background(.white)
                 .cornerRadius(10, antialiased: true)
+                .animation(nil)
             }
             .offset(y: geometry.size.height / 2)
-            .edgesIgnoringSafeArea(.all)
+            .animation(.interpolatingSpring(stiffness: 200.0, damping: 25.0, initialVelocity: 10.0))
+            .edgesIgnoringSafeArea(.all)           
         }
     }
 }

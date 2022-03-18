@@ -27,12 +27,14 @@ struct ContentView: View {
                 
                 .navigationBarTitle("Restaurants")
             }
+            .offset(y: showDetail ? -100 : 0)
+            .animation(.easeOut(duration: 0.2))
             
             if showDetail {
                 BlankView(bgColor: .black)
                     .opacity(0.5)
                     .onTapGesture {
-                        self.showDetail = false 
+                        self.showDetail = false
                     }
                 selectedRestaurant.map {
                     RestaurantDetailView(restaurant: $0)
