@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5377C58127E4E0A400859EC0 /* DragState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377C58027E4E0A400859EC0 /* DragState.swift */; };
+		5377C58327E4E13100859EC0 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377C58227E4E13100859EC0 /* DraggableView.swift */; };
 		538BE6D027E385C800AC1403 /* GestureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538BE6CF27E385C800AC1403 /* GestureApp.swift */; };
 		538BE6D227E385C800AC1403 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538BE6D127E385C800AC1403 /* ContentView.swift */; };
 		538BE6D427E385CA00AC1403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538BE6D327E385CA00AC1403 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5377C58027E4E0A400859EC0 /* DragState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragState.swift; sourceTree = "<group>"; };
+		5377C58227E4E13100859EC0 /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		538BE6CC27E385C800AC1403 /* Gesture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gesture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		538BE6CF27E385C800AC1403 /* GestureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureApp.swift; sourceTree = "<group>"; };
 		538BE6D127E385C800AC1403 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			children = (
 				538BE6CF27E385C800AC1403 /* GestureApp.swift */,
 				538BE6D127E385C800AC1403 /* ContentView.swift */,
+				5377C58227E4E13100859EC0 /* DraggableView.swift */,
+				5377C58027E4E0A400859EC0 /* DragState.swift */,
 				538BE6D327E385CA00AC1403 /* Assets.xcassets */,
 				538BE6D527E385CA00AC1403 /* Preview Content */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				538BE6D227E385C800AC1403 /* ContentView.swift in Sources */,
+				5377C58127E4E0A400859EC0 /* DragState.swift in Sources */,
+				5377C58327E4E13100859EC0 /* DraggableView.swift in Sources */,
 				538BE6D027E385C800AC1403 /* GestureApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

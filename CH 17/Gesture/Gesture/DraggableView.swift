@@ -1,24 +1,24 @@
 //
-//  ContentView.swift
+//  DraggableView.swift
 //  Gesture
 //
-//  Created by Ahmed Amin on 17/03/2022.
+//  Created by Ahmed Amin on 18/03/2022.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    @GestureState private var dragState = DragState.inactive
-    @State private var position = CGSize.zero
+struct DraggableView<Content>: View where Content: View{
+    @GestureState private var dragState: DragState = .inactive
+    @State private var position: CGSize = .zero
+    var content: () -> Content
+    
     
     var body: some View {
-       Image(systemName: "star.circle.fill")
-            .font(.system(size: 100))
+        self.content()
             .opacity(dragState.isPressing ? 0.5 : 1.0)
             .offset(x: position.width + dragState.translation.width,
                     y: position.height + dragState.translation.height)
             .animation(.easeInOut)
-            .foregroundColor(.green)
             .gesture(
                 LongPressGesture(minimumDuration: 1.0)
                     .sequenced(before: DragGesture())
@@ -32,26 +32,22 @@ struct ContentView: View {
                             break
                         }
                     })
-                
                     .onEnded({ value in
-                        guard case .second(true, let drag?) = value else {
-                            return
-                        }
-                        self.position.height = drag.translation.height
-                        self.position.width = drag.translation.width
+                        guard case .second(true, let drag?) = value else { return }
+                        self.position.width += drag.translation.width
+                        self.position.height += drag.translation.height
+                        
                     })
-                
-    
             )
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct DraggableView_Previews: PreviewProvider {
     static var previews: some View {
-        DraggableView {
-            Text("Swift")
-                .font(.system(size: 50, weight: .bold, design: .rounded))
-                .foregroundColor(.red)
+        DraggableView() {
+            Image(systemName: "star.circle.fill")
+                .font(.system(size: 100))
+                .foregroundColor(.green)            
         }
     }
 }
