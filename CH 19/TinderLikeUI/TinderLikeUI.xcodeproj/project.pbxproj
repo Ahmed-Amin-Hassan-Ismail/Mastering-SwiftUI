@@ -13,6 +13,8 @@
 		534578ED27E8AE4200499E36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 534578EC27E8AE4200499E36 /* Preview Assets.xcassets */; };
 		534578F427E8AF1100499E36 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F327E8AF1100499E36 /* Trip.swift */; };
 		534578F627E8AF5E00499E36 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F527E8AF5E00499E36 /* CardView.swift */; };
+		534578F827E8B72A00499E36 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F727E8B72A00499E36 /* BottomBarView.swift */; };
+		534578FA27E8B7E600499E36 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F927E8B7E600499E36 /* TopBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		534578EC27E8AE4200499E36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		534578F327E8AF1100499E36 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		534578F527E8AF5E00499E36 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		534578F727E8B72A00499E36 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
+		534578F927E8B7E600499E36 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				534578E527E8AE4100499E36 /* TinderLikeUIApp.swift */,
 				534578E727E8AE4100499E36 /* ContentView.swift */,
 				534578F527E8AF5E00499E36 /* CardView.swift */,
+				534578F927E8B7E600499E36 /* TopBarView.swift */,
+				534578F727E8B72A00499E36 /* BottomBarView.swift */,
 				534578F327E8AF1100499E36 /* Trip.swift */,
 				534578E927E8AE4200499E36 /* Assets.xcassets */,
 				534578EB27E8AE4200499E36 /* Preview Content */,
@@ -146,6 +152,8 @@
 				534578F427E8AF1100499E36 /* Trip.swift in Sources */,
 				534578E827E8AE4100499E36 /* ContentView.swift in Sources */,
 				534578F627E8AF5E00499E36 /* CardView.swift in Sources */,
+				534578F827E8B72A00499E36 /* BottomBarView.swift in Sources */,
+				534578FA27E8B7E600499E36 /* TopBarView.swift in Sources */,
 				534578E627E8AE4100499E36 /* TinderLikeUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
