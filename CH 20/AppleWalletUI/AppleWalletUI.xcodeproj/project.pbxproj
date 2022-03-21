@@ -13,6 +13,8 @@
 		533B576827E922CF005BEF61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533B576727E922CF005BEF61 /* Preview Assets.xcassets */; };
 		533B577027E92666005BEF61 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B576F27E92666005BEF61 /* Card.swift */; };
 		533B577427E9267E005BEF61 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577327E9267E005BEF61 /* Transaction.swift */; };
+		533B577727E92719005BEF61 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577627E92719005BEF61 /* TransactionView.swift */; };
+		533B577A27E928D3005BEF61 /* TransactionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577927E928D3005BEF61 /* TransactionHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		533B576727E922CF005BEF61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		533B576F27E92666005BEF61 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		533B577327E9267E005BEF61 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		533B577627E92719005BEF61 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		533B577927E928D3005BEF61 /* TransactionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +88,19 @@
 		533B577527E926A9005BEF61 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				533B577827E928C2005BEF61 /* Transaction */,
 				533B576227E922CE005BEF61 /* ContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		533B577827E928C2005BEF61 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				533B577627E92719005BEF61 /* TransactionView.swift */,
+				533B577927E928D3005BEF61 /* TransactionHistoryView.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +175,9 @@
 			files = (
 				533B576327E922CE005BEF61 /* ContentView.swift in Sources */,
 				533B577027E92666005BEF61 /* Card.swift in Sources */,
+				533B577727E92719005BEF61 /* TransactionView.swift in Sources */,
 				533B577427E9267E005BEF61 /* Transaction.swift in Sources */,
+				533B577A27E928D3005BEF61 /* TransactionHistoryView.swift in Sources */,
 				533B576127E922CE005BEF61 /* AppleWalletUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
