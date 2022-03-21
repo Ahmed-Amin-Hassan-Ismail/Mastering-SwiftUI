@@ -12,34 +12,33 @@ struct CardView: View, Identifiable {
     var image: String
     var title: String
     var body: some View {
-    
-            Image(image)
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, idealWidth: nil, maxWidth: .infinity, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .center)
-                .cornerRadius(10)
-                .padding(.horizontal, 15)
-                .overlay(
-                    VStack {
-                        Text(title)
-                            .font(.system(.headline, design: .rounded))
-                            .bold()
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 10)
-                            .background(.white)
-                        .cornerRadius(5)
-                    }
-                        .padding(.bottom, 20)
-                    ,alignment: .bottom
-                )
-            
-            
+        
+        Image(image)
+            .resizable()
+            .scaledToFill()
+            .frame(minWidth: 0, idealWidth: nil, maxWidth: .infinity, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .center)
+            .cornerRadius(10)
+            .padding(.horizontal, 15)
+            .overlay(
                 
-                
-   
-                
-            
-            
+                Text(title)
+                    .font(.system(.headline, design: .rounded))
+                    .bold()
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 10)
+                    .background(.white)
+                    .cornerRadius(5)
+                    .padding(.bottom, 20)
+                ,alignment: .bottom
+            )
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
 }
