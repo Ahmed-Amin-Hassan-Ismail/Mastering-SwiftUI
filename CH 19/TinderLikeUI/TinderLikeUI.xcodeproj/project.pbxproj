@@ -15,6 +15,8 @@
 		534578F627E8AF5E00499E36 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F527E8AF5E00499E36 /* CardView.swift */; };
 		534578F827E8B72A00499E36 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F727E8B72A00499E36 /* BottomBarView.swift */; };
 		534578FA27E8B7E600499E36 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578F927E8B7E600499E36 /* TopBarView.swift */; };
+		534578FC27E8CC2000499E36 /* DragState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578FB27E8CC2000499E36 /* DragState.swift */; };
+		534578FE27E8EE7700499E36 /* Transition+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534578FD27E8EE7700499E36 /* Transition+EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		534578F527E8AF5E00499E36 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		534578F727E8B72A00499E36 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		534578F927E8B7E600499E36 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		534578FB27E8CC2000499E36 /* DragState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragState.swift; sourceTree = "<group>"; };
+		534578FD27E8EE7700499E36 /* Transition+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+EXT.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				534578F927E8B7E600499E36 /* TopBarView.swift */,
 				534578F727E8B72A00499E36 /* BottomBarView.swift */,
 				534578F327E8AF1100499E36 /* Trip.swift */,
+				534578FB27E8CC2000499E36 /* DragState.swift */,
+				534578FD27E8EE7700499E36 /* Transition+EXT.swift */,
 				534578E927E8AE4200499E36 /* Assets.xcassets */,
 				534578EB27E8AE4200499E36 /* Preview Content */,
 			);
@@ -149,11 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				534578FC27E8CC2000499E36 /* DragState.swift in Sources */,
 				534578F427E8AF1100499E36 /* Trip.swift in Sources */,
 				534578E827E8AE4100499E36 /* ContentView.swift in Sources */,
 				534578F627E8AF5E00499E36 /* CardView.swift in Sources */,
 				534578F827E8B72A00499E36 /* BottomBarView.swift in Sources */,
 				534578FA27E8B7E600499E36 /* TopBarView.swift in Sources */,
+				534578FE27E8EE7700499E36 /* Transition+EXT.swift in Sources */,
 				534578E627E8AE4100499E36 /* TinderLikeUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

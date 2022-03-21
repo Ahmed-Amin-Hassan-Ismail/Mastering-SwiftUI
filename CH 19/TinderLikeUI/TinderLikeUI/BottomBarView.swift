@@ -25,13 +25,13 @@ struct BottomBarView: View {
                     .background(.black)
                     .cornerRadius(10)
             }
-            
+            //padding(.horizontal, 35)
             Spacer()
             
             Image(systemName: "heart")
                 .font(.system(size: 30))
         }
-        .padding(.horizontal, 35)
+        .padding(.horizontal, 50)
     }
 }
 
