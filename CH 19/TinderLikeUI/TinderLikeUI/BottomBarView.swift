@@ -17,20 +17,21 @@ struct BottomBarView: View {
                 
             } label: {
                 Text("book it now".uppercased())
-                    .font(.headline)
+                    .font(.subheadline)
                     .bold()
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
+                    .padding(.horizontal, 35)
+                    .padding(.vertical, 15)
                     .foregroundColor(.white)
                     .background(.black)
                     .cornerRadius(10)
             }
+            
             Spacer()
             
             Image(systemName: "heart")
                 .font(.system(size: 30))
         }
-        .padding()
+        .padding(.horizontal, 35)
     }
 }
 

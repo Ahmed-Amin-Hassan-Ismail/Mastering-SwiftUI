@@ -9,11 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        VStack {
+            TopBarView()
+            CardView(image: "yosemite-usa", title: "Yosemite, USA")
+            Spacer(minLength:  20)
+            BottomBarView()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        Group {
+            ContentView()
+            TopBarView().previewLayout(.sizeThatFits)
+            BottomBarView().previewLayout(.sizeThatFits)
+        }
     }
 }
