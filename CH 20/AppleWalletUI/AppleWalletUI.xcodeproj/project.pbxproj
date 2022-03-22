@@ -16,6 +16,7 @@
 		533B577727E92719005BEF61 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577627E92719005BEF61 /* TransactionView.swift */; };
 		533B577A27E928D3005BEF61 /* TransactionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577927E928D3005BEF61 /* TransactionHistoryView.swift */; };
 		533B577D27E9307B005BEF61 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577C27E9307B005BEF61 /* CardView.swift */; };
+		533B578027E93505005BEF61 /* TopNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B577F27E93505005BEF61 /* TopNavBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		533B577627E92719005BEF61 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		533B577927E928D3005BEF61 /* TransactionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryView.swift; sourceTree = "<group>"; };
 		533B577C27E9307B005BEF61 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		533B577F27E93505005BEF61 /* TopNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +92,9 @@
 		533B577527E926A9005BEF61 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				533B577E27E9330F005BEF61 /* WalletView */,
 				533B577B27E93072005BEF61 /* CardView */,
 				533B577827E928C2005BEF61 /* Transaction */,
-				533B576227E922CE005BEF61 /* WalletView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,6 +114,15 @@
 				533B577C27E9307B005BEF61 /* CardView.swift */,
 			);
 			path = CardView;
+			sourceTree = "<group>";
+		};
+		533B577E27E9330F005BEF61 /* WalletView */ = {
+			isa = PBXGroup;
+			children = (
+				533B576227E922CE005BEF61 /* WalletView.swift */,
+				533B577F27E93505005BEF61 /* TopNavBarView.swift */,
+			);
+			path = WalletView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 				533B577727E92719005BEF61 /* TransactionView.swift in Sources */,
 				533B577427E9267E005BEF61 /* Transaction.swift in Sources */,
 				533B577A27E928D3005BEF61 /* TransactionHistoryView.swift in Sources */,
+				533B578027E93505005BEF61 /* TopNavBarView.swift in Sources */,
 				533B576127E922CE005BEF61 /* AppleWalletUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
